@@ -1,0 +1,6 @@
+login: 'log' #vk login/number, eg <<login: '88005553535'>>
+password: 'pass' #vk password, eg <<password: 'az2of0z3'>>
+wallid: 'id' #vk group id, eg <<wallid: '-12345678'>> [!!!] group id always starts from '-' sign [!!! ]
+domain: 'shortlink' #short link to group, eg <<domain: vkmusic>> because group link is vk.com/vkmusic
+token: 'token' #telegram bot token, eg <<token: 12441:SjSaaUsjflASa'>>
+channel: 'channel' #your telegram channel, eg <<channel: '@durov'>>
