@@ -47,7 +47,8 @@ def attachments(): #analyzing attachments
                         continue
             if walldata['items'][0]['attachments'][0]['type'] == 'video': #if attachment is video
                 videoid = walldata['items'][0]['attachments'][0]['video']['id'] #video's id is needed to generate link to the video
-                url = 'vk.com/video{}_{}'.format(wallid, videoid)
+                videoOwner = walldata['items'][0]['attachments'][0]['video']['owner_id']
+                url = 'vk.com/video{}_{}'.format(videoOwner, videoid)
                 attachmentType = 'video'
                 return url, attachmentType
             else:
