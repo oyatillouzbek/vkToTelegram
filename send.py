@@ -21,3 +21,8 @@ def sendtextandphoto(photourl, message):
 @retry(tries=10, delay=18)
 def sendtextandvideo(message):
     bot.send_message(channel, message, parse_mode='HTML')
+
+@retry(tries=10, delay=18)
+def sendtextandgif(gifurl, message):
+    bot.send_video(channel, gifurl).wait()
+    bot.send_message(channel, message)

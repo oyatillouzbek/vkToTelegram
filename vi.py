@@ -51,6 +51,15 @@ def attachments(): #analyzing attachments
                 url = 'vk.com/video{}_{}'.format(videoOwner, videoid)
                 attachmentType = 'video'
                 return url, attachmentType
+            if walldata['items'][0]['attachments'][0]['type'] == 'doc':
+                if walldata['items'][0]['attachments'][0]['doc']['ext'] == 'gif':
+                    url = walldata['items'][0]['attachments'][0]['doc']['url']
+                    attachmentType = 'gif'
+                    return url, attachmentType
+                else:
+                    a = 'a'
+                    b = 'b'
+                    return a, b
             else:
                 a = 'a'
                 b = 'b'
@@ -91,6 +100,8 @@ while 1==1:
         tempmsg = '{}{}'.format(hiddenvideo, message)
         send.sendtextandvideo(tempmsg)
         del(hiddenvideo, tempmsg)
+    elif attachmentType == 'gif':
+        send.sendtextandgif(url, message)
     else:
         send.sendtextonly(message)
     print('[{}] Post sent to telegram'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
