@@ -1,4 +1,4 @@
-import pyyaml
+import yaml
 
 def readcfg(configfile):
     try:
