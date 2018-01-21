@@ -27,10 +27,9 @@ def is_pinned(): #searching for pinned post and skipping it via offset parameter
             return 1
     except KeyError:
         return 0
-offset = is_pinned()
 
 def wallget(): #using wallget api
-    wallget = api.wall.get(owner_id=wallid, domain=domain, offset=offset, count='1', filter='all', extended='0', v='5.69')
+    wallget = api.wall.get(owner_id=wallid, domain=domain, offset=is_pinned(), count='1', filter='all', extended='0', v='5.69')
     return wallget
 
 def attachments(): #analyzing attachments
