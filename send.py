@@ -9,25 +9,25 @@ bot.update_bot_info()
 def sendtextonly(message):
     try:
         bot.send_message(channel, message, disable_web_page_preview=True)
-    except OSError:
+    except Exception:
         sendtextonly(message)
 
 def sendtextandphoto(photourl, message):
     try:
         bot.send_photo(channel, photourl).wait()
         bot.send_message(channel, message, disable_web_page_preview=True)
-    except OSError:
+    except Exception:
         sendtextandphoto(photourl, message)
 
 def sendtextandvideo(message):
     try:
         bot.send_message(channel, message, parse_mode='HTML')
-    except OSError:
+    except Exception:
         sendtextandvideo(message)
 
 def sendtextandgif(gifurl, message):
     try:
         bot.send_video(channel, gifurl).wait()
         bot.send_message(channel, message)
-    except OSerror:
+    except Exception:
         sendtextandgif(gifurl, message)
