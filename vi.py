@@ -33,10 +33,10 @@ def is_pinned():
 #using wallget api
 def wallget():
     try:
-        wallget = api.wall.get(owner_id=wallid, domain=domain, offset=is_pinned(), count='1', filter='all', extended='0', v='5.69')
+        _wallget = api.wall.get(owner_id=wallid, domain=domain, offset=is_pinned(), count='1', filter='all', extended='0', v='5.69')
     except Exception:
         wallget()
-    return wallget
+    return _wallget
 
 #analyzing attachments
 def attachments():
