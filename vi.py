@@ -1,4 +1,4 @@
-import vk_api
+import vk
 import datetime
 import cfg
 from time import sleep
@@ -8,15 +8,14 @@ login = cfg.readcfg('config.yml')['login']
 password = cfg.readcfg('config.yml')['password']
 wallid = cfg.readcfg('config.yml')['wallid']
 domain = cfg.readcfg('config.yml')['domain']
-vk_session = vk_api.VkApi(login, password)
+vk_session = vk.AuthSession('6309796', login, password, scope='wall,groups,offline')
 
 try:
-    vk_session.auth()
+    api = vk.API(vk_session)
     print('[{}] Auth Succesful!'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
-except vk_api.AuthError as e:
+except Exception as e:
     print('[{}] Auth Error!\nTraceback:\n'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
     print(e)
-api = vk_session.get_api()
 
 #searching for pinned post and skipping it via offset parameter if found
 def is_pinned():
