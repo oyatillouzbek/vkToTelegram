@@ -89,6 +89,8 @@ lastid = 0
 walldata = wallget()
 
 while 1==1:
+    if walldata == None:
+        walldata = wallget() #if couldn't get post's data. Maybe because of internet, mybe bcs of bug, but it happens often.
     currid = getcurrid()
 
     while currid == lastid:
