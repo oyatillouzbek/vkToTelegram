@@ -33,8 +33,12 @@ def is_pinned():
 def wallget():
     try:
         _wallget = api.wall.get(owner_id=wallid, domain=domain, offset=is_pinned(), count='1', filter='all', extended='0', v='5.69')
-        return _wallget
+        if _wallget == None:
+            _wallget = wallget()
+        else:
+            return _wallget
     except Exception:
+        sleep(10)
         wallget()
 
 #analyzing attachments
@@ -89,8 +93,6 @@ lastid = 0
 walldata = wallget()
 
 while 1==1:
-    if walldata == None:
-        walldata = wallget() #if couldn't get post's data. Maybe because of internet, mybe bcs of bug, but it happens often.
     currid = getcurrid()
 
     while currid == lastid:
