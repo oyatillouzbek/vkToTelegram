@@ -93,6 +93,8 @@ lastid = 0
 walldata = wallget()
 
 while 1==1:
+    while walldata == None:
+        walldata = wallget()
     currid = getcurrid()
 
     while currid == lastid:
@@ -100,6 +102,8 @@ while 1==1:
         sleep(45)
         del(currid, walldata)
         walldata = wallget()
+        while walldata == None:
+            walldata = wallget()
         currid = getcurrid()
 
     print('[{}] New post found'.format(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
